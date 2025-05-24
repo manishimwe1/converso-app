@@ -8,7 +8,9 @@ import {getSubjectColor} from "@/lib/utils";
 const Page = async () => {
     const companions = await getAllCompanions({ limit: 3 });
     const recentSessionsCompanions = await getRecentSessions(10);
-
+  if(!companions) return(
+    <p>no companions yet</p>
+  )
   return (
     <main>
       <h1>Popular Companions</h1>

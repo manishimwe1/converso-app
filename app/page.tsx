@@ -32,11 +32,11 @@ export default async function HomePage() {
   const recentSessionsCompanions: Companion[] = await getRecentSessions(10);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
-      <div className="container mx-auto px-6 py-5 md:py-10">
+    <main className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50 w-screen mx-auto">
+      <div className="container mx-auto">
           {/* for mobile only */}
 
-        <div className="w-full h-fit flex items-end justify-end min-lg:hidden mb-5">
+        <div className="w-full h-fit flex items-end justify-end min-lg:hidden mb-5 pr-2">
           <Link href="/companions/new">
             <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
               <Plus className="w-4 h-4 mr-2" />
@@ -45,7 +45,7 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 ">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Welcome Section */}
@@ -263,7 +263,7 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

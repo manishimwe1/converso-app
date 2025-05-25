@@ -7,6 +7,12 @@ export const subjects = [
   "economics",
 ];
 
+export const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Companions", href: "/companions" },
+  { label: "My Journey", href: "my-journey" },
+];
+
 export const subjectsColors = {
   science: "#E5D0FF",
   maths: "#FFDA6E",

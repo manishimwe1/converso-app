@@ -5,7 +5,7 @@ import NavItems from "@/components/NavItems";
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
+        <header className="navbar">
             <Link href="/">
                 <div className="flex items-center gap-2.5 cursor-pointer">
                     <Image
@@ -27,7 +27,7 @@ const Navbar = () => {
                     <UserButton />
                 </SignedIn>
             </div>
-        </nav>
+        </header>
     )
 }
 

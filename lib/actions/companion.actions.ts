@@ -18,6 +18,20 @@ export const createCompanion = async (formData: CreateCompanion) => {
     return data[0];
 }
 
+export const getAllCompanionInDb = async () => {
+    const supabase = createSupabaseClient();
+
+    let query = supabase.from('companions').select().order('created_at',{ascending:true});
+
+    
+    const { data: companions, error } = await query;
+
+    if(error) throw new Error(error.message);
+
+    return companions;
+}
+
+
 export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }: GetAllCompanions) => {
     const supabase = createSupabaseClient();
 
@@ -68,17 +82,20 @@ export const addToSessionHistory = async (companionId: string) => {
     return data;
 }
 
-export const getRecentSessions = async (limit = 10) => {
+export const getRecentSessions = async (limit = 10): Promise<Companion[]> => {
     const supabase = createSupabaseClient();
     const { data, error } = await supabase
         .from('session_history')
         .select(`companions:companion_id (*)`)
         .order('created_at', { ascending: false })
-        .limit(limit)
+        .limit(limit);
 
-    if(error) throw new Error(error.message);
+    if (error) throw new Error(error.message);
 
-    return data.map(({ companions }) => companions);
+    if (!data) return [];
+    
+
+    return data.map((session) => session.companions);
 }
 
 export const getUserSessions = async (userId: string, limit = 10) => {

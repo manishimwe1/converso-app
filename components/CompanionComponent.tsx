@@ -80,7 +80,7 @@ const CompanionComponent = ({ companionId, subject, topic, name, userName, userI
         setCallStatus(CallStatus.CONNECTING)
 
         const assistantOverrides = {
-            variableValues: { subject, topic, style },
+            variableValues: { subject, topic, style,userName },
             clientMessages: ["transcript"],
             serverMessages: [],
         }
